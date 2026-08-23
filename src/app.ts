@@ -1,11 +1,12 @@
-import express from 'express'
-import { env } from './config/env.js';
+import express from 'express';
+import { errorHandler } from './utils/errorHandler.js';
+import authRouter from './modules/auth/auth.routes.js';
 
-const app = express()
+const app = express();
 
-app.get('/', async(req,res)=>{
-    console.log("route hit")
-    return res.status(200).json({message:"Server is up and running"})
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api/v1/auth', authRouter);
+app.use(errorHandler);
 
 export default app;
