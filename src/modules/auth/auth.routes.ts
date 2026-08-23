@@ -6,6 +6,6 @@ import { userLogin, userRegister } from './auth.controller.js';
 const router = Router()
 
 router.post('/register', validate(registerUserSchema), userRegister)
-router.post('login', validate(userLoginSchema), userLogin)
+router.post('/login', validate(userLoginSchema), userLogin)
 
 export default router
